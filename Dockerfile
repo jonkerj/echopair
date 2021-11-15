@@ -3,7 +3,7 @@ RUN mkdir /workdir
 WORKDIR /workdir
 COPY . .
 RUN go mod download
-RUN go build -o /echopair main.go
+RUN CGO_ENABLED=0 go build -o /echopair main.go
 
 FROM scratch
 ENV GOTRACEBACK=single
